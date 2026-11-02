@@ -10,7 +10,7 @@ My personal portfolio, built as a Windows 98 desktop. Projects, experience, stud
 
 | | |
 |---|---|
-| ![My Projects folder with a project window](screenshots/02-projects.png) | ![Start menu over the Experience window](screenshots/03-start-menu.png) |
+| ![My Projects folder with the SpiceFlow window](screenshots/02-projects.png) | ![Start menu over the Experience window](screenshots/03-start-menu.png) |
 | ![Light theme with About Me and In Progress](screenshots/04-light-theme.png) | ![DOOM running in a window](screenshots/05-doom.png) |
 
 On phones, windows open full screen one at a time:
