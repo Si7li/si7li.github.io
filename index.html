@@ -223,16 +223,21 @@
     <div class="window-body">
       <h2>TinyML CAN Bus Intrusion Detection</h2>
       <p class="muted">September 2026 - October 2026</p>
-      <p>Detects attacks on a car's CAN bus in real time, with a tiny neural network running on a microcontroller.</p>
+      <p>An STM32 on a car's CAN bus checks every frame in real time with rules and a tiny int8 neural network, and the board itself is locked down against tampering.</p>
       <ul>
-        <li>Detects DoS and four spoofing attacks on a live 500 kbit/s CAN bus with an int8 model on an STM32F446 (X-CUBE-AI): 40 &micro;s per frame, 20 KB flash, 1 KB RAM, macro-F1 0.94 vs 0.95 in float</li>
-        <li>Leakage-free evaluation on CICIoV2024 (1.4M real-vehicle frames): removed the duplicates that inflate macro-F1 to 0.99 and weighted rare classes, for 0.1% false positives and 0.5 false alarms per minute live</li>
-        <li>Benchmarked a random forest against a compact MLP and deployed the MLP: 1.1 KB of weights, 25 &micro;s per inference</li>
+        <li>Rules (ID whitelist, timing) plus a 1,441-parameter int8 MLP hand-written in C on an STM32F446: 63 &micro;s per frame, bit-identical to the Python model on 37.7M frames</li>
+        <li>Trained on the ROAD dataset (real car, masquerade attacks): 99.2% of test attack frames caught at ALERT, about 40 ms to the first alert; retrained for a second car (CAN-MIRGU): 2.5 false warnings per hour on a day it never saw</li>
+        <li>Showed why CICIoV2024 can't evaluate an AI detector: 1.4M rows but only 3,588 unique, and a one-line ID whitelist catches all 184,482 attacks</li>
+        <li>Hardened the device: ECDSA-signed secure bootloader with anti-rollback, read and write protection, tamper erase, an ECDH key made on the chip, HMAC-signed alerts, and SecOC-style AES-CMAC authentication that catches a believable speed spoof the AI misses, in 0.33 s</li>
       </ul>
       <fieldset>
         <legend>Built with</legend>
-        <ul class="tags"><li>Python</li><li>scikit-learn</li><li>C</li><li>X-CUBE-AI</li><li>STM32F446</li></ul>
+        <ul class="tags"><li>Python</li><li>TensorFlow</li><li>C</li><li>STM32F446</li><li>CAN</li><li>ECDSA</li><li>AES-CMAC</li></ul>
       </fieldset>
+      <div class="button-row">
+        <a class="button" href="https://github.com/Si7li/Can_Bus_Intrusion_Detection" target="_blank" rel="noopener">View code</a>
+        <a class="button" href="https://github.com/Si7li/Can_Bus_Intrusion_Detection/blob/main/results/RESULTS.md" target="_blank" rel="noopener">Results</a>
+      </div>
     </div>
   </section>
 
