@@ -113,7 +113,7 @@
       <ul>
         <li>GenAI &amp; LLMs: RAG, AI agents, LangGraph, LoRA fine-tuning, Hugging Face, Qdrant, Gemini API, Whisper</li>
         <li>ML &amp; vision: PyTorch, TensorFlow, scikit-learn, YOLOv11, SAM 2, OpenCV</li>
-        <li>Edge &amp; embedded: int8 quantization, X-CUBE-AI, STM32, FreeRTOS, C, VHDL, FPGA</li>
+        <li>Edge &amp; embedded: int8 quantization, TensorFlow Lite, STM32, CAN, secure boot, FreeRTOS, C, VHDL, FPGA</li>
         <li>Software: Python, C++, SQL, FastAPI, Docker, Git, CI/CD, pytest, Linux, GCP</li>
       </ul>
 
@@ -222,12 +222,11 @@
   <section class="window" id="tinyml-can" data-title="TinyML CAN Bus Intrusion Detection" data-icon="icons/program-16.png" data-width="540" hidden>
     <div class="window-body">
       <h2>TinyML CAN Bus Intrusion Detection</h2>
-      <p class="muted">September 2026 - October 2026</p>
+      <p class="muted">September 2026 - November 2026</p>
       <p>An STM32 on a car's CAN bus checks every frame in real time with rules and a tiny int8 neural network, and the board itself is locked down against tampering.</p>
       <ul>
         <li>Rules (ID whitelist, timing) plus a 1,441-parameter int8 MLP hand-written in C on an STM32F446: 63 &micro;s per frame, bit-identical to the Python model on 37.7M frames</li>
         <li>Trained on the ROAD dataset (real car, masquerade attacks): 99.2% of test attack frames caught at ALERT, about 40 ms to the first alert; retrained for a second car (CAN-MIRGU): 2.5 false warnings per hour on a day it never saw</li>
-        <li>Showed why CICIoV2024 can't evaluate an AI detector: 1.4M rows but only 3,588 unique, and a one-line ID whitelist catches all 184,482 attacks</li>
         <li>Hardened the device: ECDSA-signed secure bootloader with anti-rollback, read and write protection, tamper erase, an ECDH key made on the chip, HMAC-signed alerts, and SecOC-style AES-CMAC authentication that catches a believable speed spoof the AI misses, in 0.33 s</li>
       </ul>
       <fieldset>
