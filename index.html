@@ -163,9 +163,9 @@
       <p class="muted">April 2026 - May 2026</p>
       <p>An AI support agent that classifies each request, retrieves the rule that applies, calls business tools through REST APIs and drafts an answer with citations. Cases it can't handle confidently go to a human.</p>
       <ul>
-        <li>45% of 150 labeled cases resolved automatically at 97.1% precision, the rest routed to human review</li>
+        <li>97.1% precision on 150 labeled cases: only confident replies are sent, the rest go to human review</li>
         <li>A verification node cut unsupported claims from 11.3% to 2.7%; hard-coded guardrails blocked 12/12 prompt injections</li>
-        <li>Hybrid vector search (RRF) in Qdrant lifted recall@5 to 86.0%, from 72.0% (BM25) and 78.7% (embeddings)</li>
+        <li>Hybrid vector search (BM25 + embeddings fused by RRF) in Qdrant reached 86.0% recall@5</li>
       </ul>
       <fieldset>
         <legend>Built with</legend>
@@ -184,7 +184,7 @@
       <p>Turns a photo of a circuit diagram into a SPICE netlist that's ready to simulate.</p>
       <ul>
         <li>Fine-tuned YOLOv11 for component detection (0.93 mAP-50), chained with SAM 2 segmentation and a vision-language model that reads component labels</li>
-        <li>Reached 98.7% segmentation accuracy on 267 annotated images by adapting SAM 2</li>
+        <li>Reached 98.7% segmentation accuracy by adapting SAM 2 to circuit diagrams</li>
         <li>Containerized the pipeline with Docker and served it from RunPod, removing the need for a local GPU</li>
         <li>Built a Flutter app that sends a photo to the RunPod endpoint and shows the netlist and simulation plots</li>
       </ul>
@@ -246,7 +246,7 @@
       <p>A small neural network written in VHDL, running on a Digilent Nexys 3 board (Xilinx Spartan-6). You draw a digit with the mouse on your PC, the image is sent to the FPGA over UART, and the board shows its answer.</p>
       <ul>
         <li>Fully connected MLP, 64 &rarr; 32 (ReLU) &rarr; 10, with 2,410 parameters</li>
-        <li>97.5% accuracy on 360 test images, the same before and after 8-bit quantization</li>
+        <li>97.5% test accuracy, the same before and after 8-bit quantization</li>
         <li>Bit-exact: the VHDL gives exactly the same answer as the Python model on every test image</li>
         <li>Classifies one image in 99 clock cycles (about 8 &micro;s)</li>
         <li>No IP cores: adders, multipliers and the UART are built from scratch, with no block RAM or DSP slices</li>
