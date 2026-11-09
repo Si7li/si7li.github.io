@@ -203,7 +203,7 @@
       <p class="muted">January 2026 - May 2026 &middot; Final year project (PFA)</p>
       <p>Describe a circuit in plain English and get a SPICE netlist, a schematic and a simulation, in one web app.</p>
       <ul>
-        <li>Fine-tuned CodeLlama-13B with LoRA (rank 128, full bf16) on 5,737 description-netlist pairs: 78% valid netlists over 250 test prompts, 92% on passive filters</li>
+        <li>Fine-tuned CodeLlama-13B with LoRA (rank 128, full bf16) on 5,737 description-netlist pairs: 91.6% valid netlists on a 50-circuit benchmark, up from 77% (8-bit, rank 64)</li>
         <li>Draws the schematic with my own C++ engine (OGDF graph layout to SVG, plus LTspice .asc export): 97% of netlists rendered, in 0.4 s on average</li>
         <li>Simulates with ngspice through PySpice and plots every voltage and current; FastAPI backend with conversation memory, React frontend</li>
       </ul>
